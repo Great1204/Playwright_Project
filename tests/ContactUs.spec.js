@@ -12,8 +12,7 @@ test("Validate the Contact US",async({page})=>{
     
     const con_us = new ContactUS(page)
     await test.step('navigated to contact US Pages',async()=>
-    await con_us.contactussubmit('gayathri','ggg2@gmail.com','Poor quality','I received a bad Quality product')
-    
+    await con_us.contactussubmit('gayathri','ggg2@gmail.com','Poor quality','I received a bad Quality product')   
 )
 
 })

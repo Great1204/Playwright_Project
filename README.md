@@ -25,11 +25,13 @@ npx playwright show-report
 
 ## Features Covered
 As of now,
-Product listing validation
-Contact Us form automation
-Product detail page validation
+E2E flow coverage
+Register user
+Login Fuctionality
+Product listing 
+Contact Us form 
+Product detail page 
+Home page validation
 
 ##
 GAYATHRI G
-
-GAYTH

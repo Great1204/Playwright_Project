@@ -18,7 +18,7 @@ export class View_Cart{
         //await this.cart_proc_checkout.waitFor({ state: 'visible' });
         //console.log(await this.page.content());
         await this.cart_proc_checkout.click();
-        console.log("view Csrt Completed");
+        console.log("view Cart Completed");
         
     
     }
