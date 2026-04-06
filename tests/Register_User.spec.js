@@ -23,7 +23,7 @@ test('Register the New User',async ({page})=>{
  })
 })
 
-test.only('Register User with existing email',async ({page})=>{
+test('Register User with existing email',async ({page})=>{
 
  const laun= new Launch(page)
  await test.step("Launched the URL sucessfully", async()=>

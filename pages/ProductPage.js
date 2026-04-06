@@ -4,6 +4,8 @@ export class ProductPage{
     constructor(page){
         this.page = page;
 
+        this.search_in = page.locator('[id="search_product"]')
+        this.search_bt = page.locator('[id="submit_search"]')
         this.txt_allprod = page.getByRole('heading',{name: 'All Products'})
         this.allprodList = page.locator('[class="col-sm-4"]')
         this.list_prod = page.locator('[href="/product_details/1"]')
@@ -15,9 +17,8 @@ export class ProductPage{
         this.prod_cond = page.getByText (' New')
         this.prod_brand = page.getByText(' Brand: Polo')
 
-
-
     }
+    
     async listProd(){
         await expect(this.txt_allprod).toBeVisible()
         const prod_count =await this.allprodList.count()
@@ -35,10 +36,21 @@ export class ProductPage{
         await expect(this.prod_cond).toBeVisible()
         await expect(this.prod_brand).toBeVisible()
         // await expect().toBeVisible()
-        // await expect().toBeVisible()
         
         }
 
-        
+        async searchProduct(search_prod){
+
+            await expect(this.txt_allprod).toBeVisible()
+            await this.search_in.fill(search_prod)
+            await this.search_bt.click()
+            const prod_name = await this.products_names.all()
+
+            console.log(prod_name)
+            for(const ele of prod_name){
+                expect(ele.toLowerCase()).toContain(search_prod.toLowerCase())
+
+            }
+        }
     }
 

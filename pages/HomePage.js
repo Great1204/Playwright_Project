@@ -2,6 +2,7 @@
  export class HomePage{
     constructor(page){
         this.page =page;
+
         this.Login_confirm = page.getByText('Logged in as')
       //  this.women=page.getByText('Women');
         this .women =page.getByRole('link', { name: ' Women' })
@@ -10,6 +11,10 @@
         this.select_cart=page.locator('[type="button"]')
         this.added_tocart = page.getByRole('heading',{name:'Added!'})
         this.viewcart = page.getByText('View Cart')
+        this.subscr = page.getByRole('heading',{name: 'Subscription'})
+        this.sub_email = page.locator('[id="susbscribe_email"]')
+        this.sub_arrow = page.locator('[id="subscribe"]')
+        this.sub_message = page.getByText('You have been successfully subscribed!')
     
         
     }
@@ -26,6 +31,12 @@
         console.log("Homen Page completed")
 
     }
+    async subscription(sub_email1){
+        await expect(this.subscr).toBeVisible()
+        await this.sub_email.fill(sub_email1)
+        await this.sub_arrow.click()
+        await expect(this.sub_message).toBeVisible()
 
+    }
   
  }
