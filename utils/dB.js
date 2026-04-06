@@ -6,7 +6,7 @@ export async function getConnection(){
     return await mysql.createConnection({
     host : 'localhost',
     user : 'root',
-    password : 'Nila@4125',
+    password : '********',
     database : 'mydb',
     port : 3306
     })
@@ -19,10 +19,10 @@ export async function createTable(){
     }
 
 export async function storeValues(){
-    const conn = await getConnection();
-  const [values] = conn.execute(`
-        INSERET INTO  AutomationExercise (Username ,Email , Password ) VALUES (${details.username},${details.email}, ${details.password}) `  )
-        return values;
+            const conn = await getConnection();
+        // const [values] = conn.execute(`
+        // INSERT INTO  AutomationExercise (Username ,Email , Password ) VALUES (${details.username},${details.email}, ${details.password}) `  )
+        // return values;
     }
 
 
