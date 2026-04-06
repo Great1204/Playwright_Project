@@ -11,11 +11,12 @@ test('Login test',async({page})=>{
     const lanuch = new Launch( page)
     await test.step('Launch_url',async()=>{
         await lanuch.navigate()
+        await lanuch.Signup_login()
     })
     // LoginLink Page
     const login = new LoginPage(page)
      await test.step('Login_Link' , async()=>{
-     await login.login_signup('hri','gg66hdg3@gail.com')
+     await login.login_signup('hri','g6jhg3@gail.com')
     })
 
     // EnterAccopuntInformation        

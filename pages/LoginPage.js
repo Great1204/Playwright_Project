@@ -16,6 +16,7 @@ export class LoginPage{
         }
        
         async login(email1,password){
+           await this.email.waitFor({ state: 'visible' });
            await this.email.fill(email1)
            await this.password.fill(password)
            await this.loginbtn.click()

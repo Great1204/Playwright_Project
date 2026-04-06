@@ -8,10 +8,11 @@ test('Register the New User',async ({page})=>{
  const laun= new Launch(page)
  await test.step("Launched the URL sucessfully", async()=>
  await laun.navigate())
+ await laun.Signup_login()
 
  const login_link=new LoginPage(page)
  await test.step("LoginLink Clicked Successfully", async()=>{
- await login_link.login_signup('ga6576yu','gg2367g3@gmail.com')
+ await login_link.login_signup('ga6576yu','gg267g3@gmail.com')
 
  })
 
@@ -22,11 +23,12 @@ test('Register the New User',async ({page})=>{
  })
 })
 
-test('Register User with existing email',async ({page})=>{
+test.only('Register User with existing email',async ({page})=>{
 
  const laun= new Launch(page)
  await test.step("Launched the URL sucessfully", async()=>
  await laun.navigate())
+ await laun.Signup_login()
 
  const login_link=new LoginPage(page)
  await test.step("LoginLink Clicked Successfully", async()=>{

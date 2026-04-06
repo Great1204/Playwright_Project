@@ -9,6 +9,7 @@
         this.product2=page.locator('a[href="/product_details/4"]')
         this.select_cart=page.locator('[type="button"]')
         this.added_tocart = page.getByRole('heading',{name:'Added!'})
+        this.viewcart = page.getByText('View Cart')
     
         
     }
