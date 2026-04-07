@@ -33,6 +33,7 @@
     }
     async subscription(sub_email1){
         await expect(this.subscr).toBeVisible()
+        await this.sub_email.scrollIntoViewIfNeeded()
         await this.sub_email.fill(sub_email1)
         await this.sub_arrow.click()
         await expect(this.sub_message).toBeVisible()

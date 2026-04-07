@@ -37,7 +37,7 @@ export class Launch{
         }
         async allProduct(){
         await this.all_product.click()
-       // await expect(this.txt_allprod).toBeVisible()
+        await expect(this.txt_allprod).toBeVisible()
 
 
         }

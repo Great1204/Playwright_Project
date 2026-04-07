@@ -16,6 +16,7 @@ export class ProductPage{
         this.prod_avail = page.getByText('In Stock')
         this.prod_cond = page.getByText (' New')
         this.prod_brand = page.getByText(' Brand: Polo')
+        this.overlay_addcart = page.getByRole('button',{name: 'Add to cart'})
 
     }
     
@@ -35,7 +36,6 @@ export class ProductPage{
         await expect(this.prod_avail).toBeVisible()
         await expect(this.prod_cond).toBeVisible()
         await expect(this.prod_brand).toBeVisible()
-        // await expect().toBeVisible()
         
         }
 
@@ -48,9 +48,21 @@ export class ProductPage{
 
             console.log(prod_name)
             for(const ele of prod_name){
-                expect(ele.toLowerCase()).toContain(search_prod.toLowerCase())
+            expect(ele.toLowerCase()).toContain(search_prod.toLowerCase())
 
             }
+        }
+        async selectProd(){
+
+            await expect(this.txt_allprod).toBeVisible()
+            await this.list_prod.allTextContents()
+            const fir_prod = this.list_prod.first()
+            await fir_prod.scrollIntoViewIfNeeded()
+            await fir_prod.hover({force : true})
+            const overlay_cart = await this.fir_prod.overlay_addcart
+            await overlay_cart.click()
+            await this.page.waitForTimeout()
+
         }
     }
 

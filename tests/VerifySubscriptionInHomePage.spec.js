@@ -4,7 +4,7 @@ import {test, expect} from '@playwright/test'
 
 test("Verify The Subscription Functionality",async({page})=>{
     const lan = new Launch(page)
-    lan.navigate()
+    await lan.navigate()
     const hp = new HomePage(page)
-    hp.subscription('gggh@getMaxListeners.com')
+    await hp.subscription('gggh@getMaxListeners.com')
 })
