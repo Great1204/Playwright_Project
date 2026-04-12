@@ -6,7 +6,7 @@ export class ProductPage{
 
         this.search_in = page.locator('[id="search_product"]')
         this.search_bt = page.locator('[id="submit_search"]')
-        this.txt_allprod = page.getByRole('heading',{name: 'All Products'})
+        this.allprod = page.getByRole('heading',{name: 'All Products'})
         this.allprodList = page.locator('[class="col-sm-4"]')
         this.list_prod = page.locator('a,[href="/product_details/1"]')
 
@@ -19,11 +19,13 @@ export class ProductPage{
         this.prod_cond = page.getByText (' New')
         this.prod_brand = page.getByText(' Brand: Polo')
         this.prods = page.locator('[class="product-image-wrapper"]')
+        this.overlay_cart = page.locator('[data-product-id="1"]')
+        this.modallay = page.locator('#cartModal')
     }
     
     async listProd(){
         await this.page.pause()
-        await expect(this.txt_allprod).toBeVisible()
+        await expect(this.allprod).toBeVisible()
         const f_prod = await this.products_names.first()
         console.log(await f_prod.allTextContents())
         await f_prod.click()
@@ -48,17 +50,24 @@ export class ProductPage{
 
             }
         }
+        getprod(){
+            return this.prods.first()
+
+        }
         async selectProd(){
 
             await expect(this.txt_allprod).toBeVisible()
             await this.list_prod.allTextContents()
-            const fir_prod = this.prods.first()
-            await fir_prod.scrollIntoViewIfNeeded()
-            await fir_prod.hover({force : true})
-            const overlay_cart = await fir_prod.overlay_add_cart
-            await overlay_cart.click()
-            await this.page.waitForTimeout()
+            const fir_prod = this.getprod()
+            await fir_prod.hover({force :true})
+            await fir_prod.locator('.fa').first().click({force :true})
+                        await this.page.pause()
+
+            await this.modallay.waitFor({state : 'visible'})
+            await this.page.pause()
+
+                    
 
         }
+    
     }
-
