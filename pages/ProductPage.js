@@ -61,11 +61,7 @@ export class ProductPage{
             const fir_prod = this.getprod()
             await fir_prod.hover({force :true})
             await fir_prod.locator('.fa').first().click({force :true})
-                        await this.page.pause()
-
             await this.modallay.waitFor({state : 'visible'})
-            await this.page.pause()
-
                     
 
         }
