@@ -49,7 +49,6 @@ export class ProductPage{
             await this.page.waitForLoadState('networkidle')
             const prod_name = await this.products_names.all()
             console.log(prod_name)
-            // Verify that search returned results
             expect(prod_name.length).toBeGreaterThan(0)
         }
         getprod(){
@@ -61,29 +60,20 @@ export class ProductPage{
             await expect(this.allprod).toBeVisible()
             const fir_prod = this.getprod()
             await fir_prod.hover({force :true})
-            // Look for and click cart/add button
-            try {
-                // Try to find and click 'Add to cart' button or icon
-                const addButton = fir_prod.locator('a.add-to-cart')
-                if(await addButton.count() > 0){
-                    await addButton.click({force: true})
-                } else {
-                    // Fallback: click any clickable icon
-                    const icon = fir_prod.locator('.fa').first()
-                    if(await icon.count() > 0){
-                        await icon.click({force: true, timeout: 5000})
-                    }
-                }
-            } catch(e) {
-                console.log('Error clicking cart icon:', e.message)
+        
+            const addButton = fir_prod.locator('a.btn-default').first()
+            await addButton.click({force: true})
+            await expect(this.page.locator(".modal-dialog.modal-confirm")).toBeVisible()
+              
             }
-            // Wait for modal or notification with a reasonable timeout
-            try {
-                await this.modallay.waitFor({state : 'visible', timeout: 5000})
-            } catch(e) {
-                console.log('Modal may not appear')
-            }
+        async modal_ViewCart(){
+            await this.page.getByRole('link',{name : "View Cart"}).click()
+        }
+        async modal_ContShopping(){
+            await this.page.getByRole('button', {name : 'Continue Shopping'}).click()
+
+        }
 
         }
     
-    }
+    

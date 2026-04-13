@@ -1,4 +1,5 @@
 import { expect } from "@playwright/test"
+import { BaseClass } from "./BaseClass"
 
 export class AddressDetails{
     constructor(page){
@@ -30,6 +31,8 @@ export class AddressDetails{
         console.log("total")
         //await expect(this.acart_total_price).toBeVisible();
         console.log("totprice")
+        const bp = new BaseClass(this.page)
+        await bp.placeorder_getrow()
         await this.acart_plc_odr.click();
 
 
