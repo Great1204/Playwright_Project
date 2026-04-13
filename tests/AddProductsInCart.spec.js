@@ -7,7 +7,7 @@ test('Adding Products In Cart', async ({page})=>{
     await lan.navigate()
     await lan.allProduct()
     const pp = new ProductPage(page)
-    pp.selectProd()
+    await pp.selectProd()
 
 
 })
