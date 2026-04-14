@@ -15,8 +15,6 @@ export class View_Cart{
                
     }
 
-    
-
     async proceed_checkout(){
         const bp = new BaseClass(this.page)
         console.log("viewCart Started")

@@ -1,12 +1,17 @@
-
 export class BaseClass {
     constructor(page) {
         this.page = page
         this.cart_tbrows = page.locator('#cart_info_table tbody tr')
         this.acart_plc_odr = page.getByRole('link',{name : 'Place Order'})
         this.grandtotal = page.locator('.cart_total_price')
-
+        this.cout_cont =this.page.getByRole('button',{name : 'Continue On Cart'})
+       
     }
+
+    async entertext(locator, input){
+        await locator.fill(input);
+    }
+
     async cart_getrow(){
         const cart_rowcount = await this.cart_tbrows.count()
         const results = []
@@ -23,8 +28,6 @@ export class BaseClass {
             const price = parseInt(priceText.replace(/[^0-9]/g, ''))
             const quantity = parseInt(quantityText)
             const total = parseInt(totalText.replace(/[^0-9]/g, ''))
-
-
             results.push({
                 name: product_name,
                 description,
@@ -56,4 +59,12 @@ export class BaseClass {
         return {cartdata, exp_grandTotal}
        
     }
+    async checkout_Modallogin() {
+        if (await this.cout_Modal.isVisible()) {
+            await this.cout_reglogin.click()
+        }
+    }
+
+
+    
 }

@@ -11,8 +11,8 @@ export class Launch{
         this.txt_testCase =page.getByRole('heading',{name : 'Test Cases',exact :true})
         this.all_product = page.locator('[href="/products"]')
         this.txt_allprod = page.getByRole('heading',{name: 'All Products'})
-
-        
+        this.home_cart = page.getByRole('link',{name :' Cart'})
+        this.shop_cart = page.getByText('Shopping Cart')
     }
      async navigate(){
         await this.page.goto('https://automationexercise.com/')           
@@ -38,8 +38,10 @@ export class Launch{
         async allProduct(){
         await this.all_product.click()
         await expect(this.txt_allprod).toBeVisible()
-
-
+        }
+        async cart(){
+        await this.home_cart.click()
+        await expect(this.shop_cart).toBeVisible()
         }
 
 }
